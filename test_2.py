@@ -42,3 +42,36 @@ for game_num, game_cubes in games.items():
         real_games.append(game_num)
             
 print(real_games)
+
+                
+min_cubes_for_game = []  
+
+for game_num, game_content in games.items():
+    game_min_cubes = {}
+    min_cubes = {'blue': 0, 'red': 0, 'green': 0}
+    for part_dict in game_content:
+        for colour, value in part_dict.items():
+            if colour in min_cubes and part_dict[colour] > min_cubes[colour]:
+                min_cubes[colour] = value
+    game_min_cubes[game_num] = min_cubes     
+    min_cubes_for_game.append(game_min_cubes)
+
+print(min_cubes_for_game)
+
+games_cubes_multiplies = []
+
+for game in min_cubes_for_game:
+    for game_num, game_content in game.items():
+        multiply_result = 1
+        for colour, value in game_content.items():
+            multiply_result *= value
+        games_cubes_multiplies.append(multiply_result)
+        
+print(sum(games_cubes_multiplies))
+
+            
+        
+    
+
+        
+
